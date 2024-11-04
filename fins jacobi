@@ -27,17 +27,20 @@ void InitData() {
     }
 }
 
+void limit () {
+    for (int i = from; i < from + numel; i++) {
+    }
+}
 // Imprimir elements d'un vector
 void PrintVect(float vect[N], int from, int numel) {
-    for (int i = from; i < from + numel; i++) {
+    limit(); { 
         printf("%f ", vect[i]);
     }
     printf("\n");
 }
-
 // Imprimir elements d'una fila d'una matriu
 void PrintRow(float mat[N][N], int row, int from, int numel) {
-    for (int i = from; i < from + numel; i++) {
+    limit();{
         printf("%f ", mat[row][i]);
     }
     printf("\n");
