@@ -27,20 +27,17 @@ void InitData() {
     }
 }
 
-void limit () {
-    for (int i = from; i < from + numel; i++) {
-    }
-}
 // Imprimir elements d'un vector
 void PrintVect(float vect[N], int from, int numel) {
-    limit(); { 
+    for (int i = from; i < from + numel; i++) {
         printf("%f ", vect[i]);
     }
     printf("\n");
 }
+
 // Imprimir elements d'una fila d'una matriu
 void PrintRow(float mat[N][N], int row, int from, int numel) {
-    limit();{
+    for (int i = from; i < from + numel; i++) {
         printf("%f ", mat[row][i]);
     }
     printf("\n");
@@ -69,7 +66,7 @@ float Magnitude(float vect[N]) {
 
 // Determinar si dos vectors són ortogonals (reutilitza Scalar)
 int Ortogonal(float vect1[N], float vect2[N]) {
-    return Scalar(vect1, vect2) == 0 ? 1 : 0;
+    return Scalar(vect1, vect2)==0;
 }
 
 // Projecció d’un vector sobre un altre (reutilitza Scalar)
@@ -95,16 +92,16 @@ float Infininorm(float M[N][N]) {
 float Onenorm(float M[N][N]) {
     float max_sum = 0.0;
     for (int j = 0; j < N; j++) {
-        float col_sum = 0.0;
+        float summ = 0.0;
         for (int i = 0; i < N; i++) {
-            col_sum += fabs(M[i][j]);
+            summ += fabs(M[i][j]);
         }
-        if (col_sum > max_sum) max_sum = col_sum;
+        if (summ > max_sum) max_sum = summ;
     }
     return max_sum;
 }
 
-// Norma de Frobenius d’una matriu (reutilitza Scalar per cada fila)
+// Norma de Frobenius d’una matriu
 float NormFrobenius(float M[N][N]) {
     float sum = 0.0;
     for (int i = 0; i < N; i++) {
@@ -132,3 +129,5 @@ void Matriu_x_Vector(float M[N][N], float vect[N], float vectres[N]) {
         vectres[i] = Scalar(M[i], vect);
     }
 }
+
+int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned iter );
